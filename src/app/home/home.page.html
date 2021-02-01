@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Lorem Ipsum ({{limit}})
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    
+    <ion-refresher pullFactor="0.5" pullMax="200" pullMin="60" slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+          
+        </ion-refresher-content>
+      </ion-refresher>
+      <ion-button (click)="openToast()">Open Toast</ion-button>
+    <ion-list>
+      <ion-item *ngFor="let pic of apiData">
+        <ion-thumbnail slot="end">
+          <ion-img [src]=" 'https://picsum.photos/id/' + pic.id + '/100/100'"></ion-img>
+        </ion-thumbnail>
+          <ion-label>
+            <h2>Author : {{pic.author}}</h2>
+            <h3>URL : <a [href]="pic.url" target="blank">{{pic.url}}</a></h3>
+            <p>Width :  {{pic.width}}px</p>
+            <p>height:  {{pic.height}}px</p>
+          </ion-label>
+        
+      </ion-item>
+    </ion-list>
+    
+     
+  </ion-content>
